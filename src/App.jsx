@@ -1,25 +1,16 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from './ThemeContext';
 
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom"
-
-import Header from './pages/Header/Header';
-import Main from './pages/Main/Main'
-import UserForm from './pages/UserForn/UserForm';
-import UserList from './pages/UserList/UserList'
-
 const App = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <BrowserRouter>
-      <Routes> 
-        <Route path="/Header" element={<Header />} />
-        <Route path="/Main" element={<Main />} />
-        <Route path="/UserForm" element={<UserForm />} />
-        <Route path="/UserList" element={<UserList />} />
-      </Routes>
-    </BrowserRouter> 
+    <div style={{ background: theme === 'light' ? '#fff' : '#333', color: theme === 'light' ? '#000' : '#fff', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div>
+        <h1>Tema Atual: {theme}</h1>
+        <button onClick={toggleTheme}>Alternar Tema</button>
+      </div>
+    </div>
   );
 };
 
